@@ -1,0 +1,217 @@
+/* Custom CSS for elegant animations and effects */
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Custom hover effects */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth gradient animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-animate {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Custom shadows */
+.soft-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.elegant-shadow {
+  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.12);
+}
+
+/* Message bubble styles */
+.message-sent {
+  background: linear-gradient(135deg, #1e40af, #0284c7);
+  color: white;
+  margin-left: auto;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 70%;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2);
+}
+
+.message-received {
+  background: white;
+  color: #1f2937;
+  margin-right: auto;
+  border-radius: 18px 18px 18px 4px;
+  max-width: 70%;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
+}
+
+/* Chat item active state */
+.chat-item.active {
+  background-color: #f0f4f8;
+  border-left-color: #1e40af;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Focus states */
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* Custom button hover effects */
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Fade in animation for messages */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease-out;
+}
+
+/* Online indicator pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.online-indicator {
+  animation: pulse 2s infinite;
+}
+
+/* Add transition for smooth dropdown toggle */
+#dropdown-menu {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+#dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modern dropdown design */
+#dropdown-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#dropdown-btn:focus {
+  outline: none;
+}
+
+#dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#dropdown-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#dropdown-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ 
+/* Modal animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#modal-overlay.show,
+#create-group-modal.show {
+  display: flex !important;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Overlay styles for blur effect */
+#modal-overlay {
+  display: none;
+  backdrop-filter: blur(8px); /* Apply blur effect */
+  transition: all 0.3s ease;
+}
+
+/* Make sure modal is centered and has a smooth fade-in effect */
+#create-group-modal {
+  display: none;
+  animation: fadeIn 0.2s ease-out forwards;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-out;
+}
+
+#create-group-modal.show {
+  display: block;
+  transform: translateY(0);
+}

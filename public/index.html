@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatsup - Simple, Secure Messaging</title>
+    <meta name="description" content="Connect with friends and family instantly. Simple, reliable, and secure messaging with Whatsup.">
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Whatsup - Simple, Secure Messaging">
+    <meta property="og:description" content="Connect with friends and family instantly. Simple, reliable, and secure messaging with Whatsup.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f4f8',
+                            100: '#d9e6f2',
+                            500: '#1e3a8a',
+                            600: '#1e40af',
+                            700: '#1d4ed8',
+                            900: '#0f172a'
+                        },
+                        secondary: {
+                            500: '#0891b2',
+                            600: '#0284c7'
+                        },
+                        gray: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-primary-600 to-secondary-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">W</span>
+                    </div>
+                    <h1 class="font-serif text-2xl font-bold text-primary-900">Whatsup</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="text-gray-600 hover:text-primary-600 transition-colors font-medium">Sign In</a>
+                    <a href="/chat" class="bg-gradient-to-r from-primary-600 to-secondary-500 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-900 via-primary-700 to-secondary-600 text-white py-20">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <div class="mb-8">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm">
+                    <span class="text-3xl font-bold">W</span>
+                </div>
+            </div>
+            <h1 class="font-serif text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                Connect with friends and family instantly
+            </h1>
+            <p class="text-xl mb-8 text-white/90 max-w-2xl mx-auto font-light">
+                Simple, reliable, and secure messaging. Stay connected with the people who matter most.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="login.html" class="bg-white text-primary-900 px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 font-medium text-lg">
+                    Start Chatting
+                </a>
+                <a href="#info">
+                    <button class="border-2 border-white/30 text-white px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300 font-medium text-lg">
+                    Learn More
+                </button>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-50">
+        <div id="info" class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl font-bold mb-4 text-primary-900">Why choose Whatsup?</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Experience messaging like never before with our powerful features designed for modern communication.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">⚡</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Lightning Fast</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Messages delivered instantly. No delays, no waiting. Just seamless communication.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">🛡️</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Secure & Private</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        End-to-end encryption keeps your conversations private and secure.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">👥</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Group Chats</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Create groups, share moments, and stay connected with everyone at once.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">📱</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Cross Platform</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Use on any device. Your messages sync seamlessly across all platforms.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">🌍</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Global Reach</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Connect with anyone, anywhere in the world. No limits, no boundaries.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="w-16 h-16 bg-gradient-to-r from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mb-6">
+                        <span class="text-primary-600 text-2xl">💬</span>
+                    </div>
+                    <h3 class="font-serif text-xl font-semibold mb-3 text-primary-900">Rich Messaging</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Send text, images, files, and more. Express yourself however you want.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-secondary-500 text-white">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="font-serif text-4xl font-bold mb-6">Ready to start connecting?</h2>
+            <p class="text-xl mb-8 text-white/90 font-light">
+                Join millions of users who trust Whatsup for their daily communication needs.
+            </p>
+            <a href="/chat" class="bg-white text-primary-900 px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 font-medium text-lg inline-block">
+                Get Started for Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-gray-200">
+        <div class="max-w-6xl mx-auto text-center px-6">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-6 h-6 bg-gradient-to-r from-primary-600 to-secondary-500 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xs">W</span>
+                </div>
+                <span class="font-serif text-xl font-bold text-primary-900">Whatsup</span>
+            </div>
+            <p class="text-gray-600 mb-6">
+                Simple, secure messaging for everyone.
+            </p>
+            <div class="flex flex-wrap justify-center space-x-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-primary-600 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary-600 transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-primary-600 transition-colors">Support</a>
+                <a href="#" class="hover:text-primary-600 transition-colors">About</a>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-200 text-sm text-gray-500">
+                © 2024 Whatsup. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

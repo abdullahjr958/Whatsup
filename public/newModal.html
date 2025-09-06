@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Group Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      #modal-overlay.show,
+      #create-group-modal.show {
+        display: flex !important;
+        animation: fadeIn 0.2s ease-out forwards;
+      }
+
+      #modal-overlay {
+        display: none;
+      }
+
+      #create-group-modal {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Trigger Button -->
+    <div class="p-6">
+      <button
+        id="dropdown-btn"
+        class="px-6 py-2 bg-primary-600 text-gray-800 rounded-sm rounded-lg hover:bg-primary-700 transition"
+      >
+        + Create Group
+      </button>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div
+      id="modal-overlay"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"
+    ></div>
+
+    <!-- Modal -->
+    <div
+      id="create-group-modal"
+      class="fixed inset-0 hidden z-50 items-center justify-center px-4 py-8"
+    >
+      <div
+        class="relative bg-white w-full max-w-lg rounded-xl shadow-xl p-6 max-h-[90vh] overflow-y-auto"
+      >
+        <!-- Close Button -->
+        <button
+          id="close-modal-btn"
+          class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl"
+        >
+          &times;
+        </button>
+
+        <!-- Modal Header -->
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+          Create New Group
+        </h2>
+
+        <!-- Group Name -->
+        <div class="mb-4">
+          <label
+            for="group-name-input"
+            class="block text-sm font-medium text-gray-700"
+            >Group Name</label
+          >
+          <input
+            type="text"
+            id="group-name-input"
+            placeholder="Enter group name"
+            class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none"
+          />
+        </div>
+
+        <!-- Search User -->
+        <div class="mb-4">
+          <form id="search-form-modal" class="space-y-2">
+            <label
+              for="username-input"
+              class="block text-sm font-medium text-gray-700"
+              >Add Users</label
+            >
+            <div class="flex mt-1 gap-2">
+              <input
+                type="text"
+                id="username-input"
+                placeholder="Search username..."
+                class="flex-grow px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none"
+              />
+              <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Search Results -->
+        <div
+          id="search-results-modal"
+          class="mb-4 space-y-2 border-t border-b border-gray-200 py-2 max-h-48 overflow-y-auto"
+        >
+          <!-- Dynamic user results go here -->
+        </div>
+
+        <!-- Added Users -->
+        <div
+          id="added-users"
+          class="mb-4 space-y-2 border-t border-gray-200 pt-2 pb-4 max-h-48 overflow-y-auto"
+        >
+          <!-- Added users go here -->
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+          <button
+            id="create-group-btn"
+            class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition"
+          >
+            Create Group
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- <script>
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modal = document.getElementById('create-group-modal');
+      const openBtn = document.getElementById('dropdown-btn');
+      const closeBtn = document.getElementById('close-modal-btn');
+      const createGroupBtn = document.getElementById('create-group-btn');
+
+      const searchForm = document.getElementById('search-form');
+      const usernameInput = document.getElementById('username-input');
+      const searchResults = document.getElementById('search-results');
+      const addedUsers = document.getElementById('added-users');
+
+      openBtn.addEventListener('click', () => {
+        modalOverlay.classList.add('show');
+        modal.classList.add('show');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modalOverlay.classList.remove('show');
+        modal.classList.remove('show');
+      });
+
+      // Close modal on outside click
+      modalOverlay.addEventListener('click', () => {
+        modalOverlay.classList.remove('show');
+        modal.classList.remove('show');
+      });
+
+      searchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        searchResults.innerHTML = '';
+        const query = usernameInput.value.trim();
+        if (!query) return;
+
+        const response = await fetch(
+          `/search?username=${encodeURIComponent(query)}`,
+          {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+        if (response.status === 404) {
+          const data = await response.json();
+          searchResults.innerHTML = `<h4 class="text-red-500">${data.message}</h4>`;
+        }
+        if (response.status === 200) {
+          const data = await response.json();
+          const userDiv = document.createElement('div');
+          userDiv.innerHTML = `
+      <div class="user-item flex items-center justify-between bg-gray-50 hover:bg-gray-100 p-2 rounded-lg">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold">
+            ${data.searchedUser.initials}
+          </div>
+          <div class="text-gray-800 font-medium">${data.searchedUser.username}</div>
+        </div>
+        <button onclick="addUser('${JSON.stringify(data.searchedUser)}')" class="text-sm px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+          Add
+        </button>
+        <button onclick="this.closest('div').remove()" class="text-sm px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
+          Remove
+        </button>
+      </div>
+    `;
+          searchResults.appendChild(userDiv);
+        }
+      });
+
+      // Add user to group list
+      function addUser(searchedUser) {
+        // Check for duplicates
+        const exists = Array.from(addedUsers.children).find((child) =>
+          child.textContent.includes(searchedUser.username)
+        );
+        if (exists) return;
+
+        const addedDiv = document.createElement('div');
+        addedDiv.className =
+          'flex items-center justify-between bg-green-50 p-2 rounded-lg hover:bg-green-100 transition';
+        addedDiv.innerHTML = `
+      <div class="flex items-center space-x-3" data-username="${searchedUser.username}">
+        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+          ${searchedUser.username.charAt(0).toUpperCase()}
+        </div>
+        <div class="text-gray-800 font-medium">${searchedUser.username}</div>
+      </div>
+      <button class="text-sm px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600" onclick="this.closest('div').remove()">
+        Remove
+      </button>
+    `;
+        addedUsers.appendChild(addedDiv);
+
+        // Clear input and results
+        usernameInput.value = '';
+        searchResults.innerHTML = '';
+      }
+
+      createGroupBtn.addEventListener('click', async () => {
+        const groupName = document.getElementById('group-name').value.trim();
+        if (!groupName) {
+          alert('Group name is required');
+          return;
+        }
+        addedUsersList = Array.from(addedUsers.children).map(child => {
+          return child.dataset.username;
+        });
+        if (addedUsersList.length === 0) {
+          alert('Add at least one user to the group');
+          return;
+        }
+        console.log('Creating group:', groupName, 'with users:', addedUsersList);
+        try {
+          const response = await fetch('/create-group', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ groupName, users: addedUsersList }),
+        });
+        if (response.status === 201) {
+          alert('Group created successfully!');
+          modalOverlay.classList.remove('show');
+          modal.classList.remove('show');
+        } else {
+          const data = await response.json();
+          alert('Error creating group: ' + data.message);
+        }
+      } catch (error) {
+        console.error('Error creating group:', error);
+        alert('An error occurred while creating the group.');
+      }
+    });
+  </script> -->
+
+    <script>
+      const modalOverlay = document.getElementById('modal-overlay');
+      const modal = document.getElementById('create-group-modal');
+      const openBtn = document.getElementById('dropdown-btn');
+      const closeBtn = document.getElementById('close-modal-btn');
+      const createGroupBtn = document.getElementById('create-group-btn');
+
+      const searchForm = document.getElementById('search-form-modal');
+      const usernameInput = document.getElementById('username-input');
+      const searchResults = document.getElementById('search-results-modal');
+      const addedUsers = document.getElementById('added-users');
+
+      // Function to open the modal
+      function openModal() {
+        modalOverlay.classList.remove('hidden'); // Show the overlay
+        createGroupModal.classList.add('show'); // Show the modal
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        modalOverlay.classList.add('hidden'); // Hide the overlay
+        createGroupModal.classList.remove('show'); // Hide the modal
+      }
+
+      // Event listeners
+      createGroupButton.addEventListener('click', openModal);
+      closeModalButton.addEventListener('click', closeModal);
+
+      // Close modal if overlay is clicked
+      modalOverlay.addEventListener('click', closeModal);
+
+      // Search form handler
+      searchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        searchResults.innerHTML = '';
+        const query = usernameInput.value.trim();
+        if (!query) return;
+
+        try {
+          const response = await fetch(
+            `/search?username=${encodeURIComponent(query)}`,
+            { method: 'GET', headers: { 'Content-Type': 'application/json' } }
+          );
+
+          const data = await response.json();
+
+          if (response.status === 404) {
+            searchResults.innerHTML = `<p class="text-red-500">${data.message}</p>`;
+            return;
+          }
+
+          if (response.status === 200) {
+            const { searchedUser } = data;
+            const userDiv = document.createElement('div');
+
+            userDiv.className = 'user-item';
+            userDiv.innerHTML = `
+          <div class="flex items-center justify-between bg-gray-50 hover:bg-gray-100 p-2 rounded-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-semibold">
+                ${searchedUser.initials}
+              </div>
+              <div class="text-gray-800 font-medium">${
+                searchedUser.username
+              }</div>
+            </div>
+            <button class="text-sm px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              onclick='addUser(${JSON.stringify(searchedUser)})'>
+              Add
+            </button>
+          </div>
+        `;
+            searchResults.appendChild(userDiv);
+          }
+        } catch (err) {
+          console.error('Search error:', err);
+          searchResults.innerHTML = `<p class="text-red-500">Error searching user.</p>`;
+        }
+      });
+
+      // Add user to the list
+      function addUser(searchedUser) {
+        // Check if already added
+        const exists = Array.from(addedUsers.children).some(
+          (child) =>
+            child.querySelector('[data-username]')?.dataset.username ===
+            searchedUser.username
+        );
+        if (exists) return;
+
+        const addedDiv = document.createElement('div');
+        addedDiv.className =
+          'flex items-center justify-between bg-green-50 p-2 rounded-lg hover:bg-green-100 transition';
+        addedDiv.innerHTML = `
+      <div class="flex items-center space-x-3" data-username="${
+        searchedUser.username
+      }">
+        <div class="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+          ${searchedUser.username.charAt(0).toUpperCase()}
+        </div>
+        <div class="text-gray-800 font-medium">${searchedUser.username}</div>
+      </div>
+      <button class="text-sm px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+        onclick="this.closest('div').remove()">
+        Remove
+      </button>
+    `;
+        addedUsers.appendChild(addedDiv);
+
+        usernameInput.value = '';
+        searchResults.innerHTML = '';
+      }
+
+      // Create group
+      createGroupBtn.addEventListener('click', async () => {
+        const groupName = document
+          .getElementById('group-name-input')
+          .value.trim();
+        if (!groupName) {
+          alert('Group name is required');
+          return;
+        }
+
+        const addedUsersList = Array.from(addedUsers.children)
+          .map(
+            (child) => child.querySelector('[data-username]')?.dataset.username
+          )
+          .filter(Boolean);
+
+        if (addedUsersList.length === 0) {
+          alert('Add at least one user to the group');
+          return;
+        }
+
+        try {
+          const response = await fetch('/create-group', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ groupName, users: addedUsersList }),
+          });
+          if (response.status == 401) {
+            const isRefreshed = await refreshAccessToken();
+            if (!isRefreshed) window.location.href = '/login';
+            else {
+              response = await fetch('/create-group', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ groupName, users: addedUsersList }),
+              });
+            }
+          }
+
+          if (response.status === 201) {
+            alert('Group created successfully!');
+            modalOverlay.classList.remove('show');
+            modal.classList.remove('show');
+          } else {
+            const data = await response.json();
+            alert('Error creating group: ' + data.message);
+          }
+        } catch (error) {
+          console.error('Error creating group:', error);
+          alert('An error occurred while creating the group.');
+        }
+      });
+    </script>
+  </body>
+</html>
