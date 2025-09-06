@@ -219,6 +219,7 @@ socket.on('connect', () => console.log('Connected to Server'));
 
 // For receiving Message
 socket.on('receiveMessage', ({ message, room }) => {
+  console.log('FROM receiveMessage event. Message: ', message.content, ' Room id: ',room.id);
   if (message.sender.username === yourUsername) message.isOwn = true;
   else message.isOwn = false;
   displayNewMessage(message, room);
