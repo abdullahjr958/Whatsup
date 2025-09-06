@@ -5,7 +5,7 @@ const Message = require('./models/messageSchema.js');
 
 module.exports = (httpServer) => {
   const io = new Server(httpServer, {
-    cors: { origin: 'http://localhost:3000', withCredentials: true },
+    cors: { origin: 'https://whatsup-hqi9.onrender.com', withCredentials: true },
   });
   
   // Socket.IO middleware to authenticate socket connections

@@ -209,7 +209,7 @@ async function loadMessages(currentRoom) {
 
 // ================================================= Socket.io =================================================
 
-const socket = io('http://localhost:3000', {
+const socket = io('https://whatsup-hqi9.onrender.com', {
   withCredentials: true,
   auth: { accessToken: accessToken },
   autoConnect: false,
