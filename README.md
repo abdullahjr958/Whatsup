@@ -4,6 +4,8 @@
 Whatsup is a real-time chat application built with **Node.js, Express, Socket.IO, and MongoDB**.  
 It supports one-on-one chats, group chats, authentication with JWT, and live message updates – all styled with a modern UI.
 
+Check out the Application on [https://whatsup-hqi9.onrender.com](https://whatsup-hqi9.onrender.com)
+
 ---
 
 ## 🚀 Features
@@ -24,7 +26,7 @@ It supports one-on-one chats, group chats, authentication with JWT, and live mes
 - **Database:** MongoDB Atlas
 - **Authentication:** JWT (Access + Refresh Tokens)
 - **Frontend:** Vanilla JS, HTML, CSS (integrated with backend)
-- **Deployment:** Railway (Backend) + MongoDB Atlas (Cloud Database)
+- **Deployment:** Render (Backend) + MongoDB Atlas (Cloud Database)
 
 ---
 
@@ -49,7 +51,7 @@ It supports one-on-one chats, group chats, authentication with JWT, and live mes
 
 ### 1️⃣ Clone the repo
 ```bash
-git clone https://github.com/your-username/whatsup.git
+git clone https://github.com/abdullahjr958/Whatsup.git
 cd whatsup
 ````
 
@@ -83,18 +85,18 @@ Open 👉 [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🌍 Deployment
 
-This app can be deployed on [Railway](https://railway.app):
+This app can be deployed on [Render](https://render.com):
 
 1. Push your code to GitHub.
-2. Create a new Railway project → **Deploy from GitHub repo**.
+2. Create a new Render project → **Deploy from GitHub repo**.
 3. Add your environment variables in the **Variables** tab.
-4. Railway will provide a live URL like:
+4. Render will provide a live URL like:
 
    ```
-   https://whatsup-production.up.railway.app
+   https://whatsup-stu9.onrender.com
    ```
 
-For the database, create a **MongoDB Atlas cluster**, get the connection string, and paste it into the `MONGO_URI` variable in Railway.
+For the database, create a **MongoDB Atlas cluster**, get the connection string, and paste it into the `MONGO_URI` variable in Render.
 
 ---
 
@@ -117,8 +119,10 @@ For the database, create a **MongoDB Atlas cluster**, get the connection string,
 ---
 
 ## 📸 Screenshots
+<img width="1917" height="877" alt="Screenshot 2025-09-07 022918" src="https://github.com/user-attachments/assets/34b2c2a2-1f29-4fa5-b7d5-37d20a9724de" />
+<img width="1919" height="877" alt="Screenshot 2025-09-07 022900" src="https://github.com/user-attachments/assets/70688f45-2d9d-49a7-a4d9-aecd54353f43" />
+<img width="1918" height="876" alt="Screenshot 2025-09-07 021727" src="https://github.com/user-attachments/assets/c8840649-6970-4f26-890b-b3b80d10b4b0" />
 
-(Add screenshots here: login page, chat page, group creation, etc.)
 
 ---
 
