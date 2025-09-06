@@ -1,8 +1,4 @@
-Absolutely 👍 Here’s a clean **`README.md`** for your **Whatsup Chat App**. I wrote it in a way that’s professional, clear, and beginner-friendly, so someone looking at your GitHub repo can understand and run your project easily.
 
----
-
-```markdown
 # 💬 Whatsup – Real-Time Chat Application
 
 Whatsup is a real-time chat application built with **Node.js, Express, Socket.IO, and MongoDB**.  
