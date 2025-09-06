@@ -37,8 +37,8 @@ Check out the Application on [https://whatsup-hqi9.onrender.com](https://whatsup
 ├── models/             # Mongoose Schemas (User, Room, Message)
 ├── middleware/         # Auth and Error Handling Middleware
 ├── router/             # Express Routers (Auth, Chat)
-├── public/             # Frontend JS, CSS, and static files
-├── views/              # HTML templates (login, register, chat)
+├── public/             # Frontend HTML, JS, CSS, and static files
+├── util/               # Utility Files
 ├── socket.js           # Socket.IO setup and events
 ├── server.js           # Main entry point
 └── README.md           # Documentation
